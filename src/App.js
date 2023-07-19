@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getEmojiData} from './redux/actions/emoji';
+import {emojiSelectors} from './redux/selectors/index';
+import  EmojiListPage from './components/emojiListPage'
 function App() {
+  
+  const emojiList = useSelector(emojiSelectors.selectEmojiData);
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getEmojiData());
+  },[dispatch]);
+  //console.log(emojiList);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EmojiListPage emojiData={emojiList}/>
     </div>
   );
 }
