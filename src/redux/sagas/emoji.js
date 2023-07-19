@@ -1,5 +1,4 @@
 import { call, put, takeLatest,all, takeEvery } from 'redux-saga/effects'
-import getEmojiData from '../../services/emoji';
 import {GET_EMOJI_DATA, getEmojiDataFailed, getEmojiDataSuccess} from '../actions/emoji';
 
 function* loadEmojiData() {
